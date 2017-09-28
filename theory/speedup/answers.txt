@@ -1,0 +1,41 @@
+Answers to the following questions should be placed in the theory/speedup directory of your repository. The file should be either a plaintext file or PDF. Via Canvas, submit your repository URL to indicate that your answers are ready for grading.
+ 
+1. What does speedup measure?
+	Speedup compares the latency for solving identical computational problem on one hardware unit versus on P hardware units.
+2. What does efficiency measure?
+	Efficiency measures return on hardware investment.
+
+3. Using the following task graph, where each task takes 5 seconds to complete:
+ 
+3a. What is the span?
+	The span is the time a parallel algorithm would take on an ideal machine with an infinite number of processors. It is equivalent to the length of the critical path.
+3b. Using a single processor, what is the expected runtime?
+	30 seconds
+3c. Using two processors, what is the expected speedup and efficiency?
+	Expected run time: 20 seconds
+	Speedup:  30/20 = 3/2
+	Efficiency: 30/(2*20)= 30/40 = 3/4
+3d. Using four processors, what is the expected speedup and efficiency?
+	Expected run time: 15 seconds
+	Speedup: 30/15= 2
+	Efficiency: 30/(4*15) = 30/60 = 1/2
+3e. Using ten processors, what is the expected speedup and efficiency?
+	Expected run time: 15 seconds
+	Speedup: 30/15= 2
+	Efficiency: 30/(10*15) = 30/150 = 3/15=1/5
+
+3f. To get a 10x speedup, how much work must be added to the parallel region and how many processors would be required? What would the efficiency be?
+	To get a 10x speedup, we would need 140 seconds spent on doing parallelizable work, which is a 120 seconds increase in time spent on parallelizable work and 28 cores.
+	T1= 150 seconds
+	Tp = 15 seconds
+	Efficiency: 150/(28*15)= 150/420= 15/42=5/14.
+
+4. A processor and memory module are 10 centimeters apart and connected by a bus with a data channel 256 bits wide. For simplicity assume the processor, bus, and memory operate at the same speed, 3 GHz. (This scenario is highly unrealistic; in most systems the processor and bus operate at significantly different frequencies)
+4a. The speed of light (3x10^8 m/s) sets a hard upper bound on how fast information can travel. If a processor performs a memory fetch, what is the minimum possible latency? Assume that only one cycle is required by the memory module to read the memory location (also highly unrealistic). Minimally, how many clock cycles must the CPU wait?
+	Latency: .1/(3x10^8) = 3.33 x10^-10 seconds
+	Minimum clock cycles: 3 cycles
+4b. What is the bandwidth between the processor and memory?
+
+Bandwidth= 3x10^9 x 256/3 = 2.56x 10^11 bits/sec
+
+
