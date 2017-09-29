@@ -12,12 +12,13 @@ int main(int argc, char** argv) {
     #pragma omp parallel num_threads(8)
     {
         t_hello[i]=omp_get_thread_num();
+        printf("Hello from %d\n",t_hello[i]);
         i++;
     }
 
-    for(i=0;i<T;i++) {
-        printf("Hello from %d\n",t_hello[i]);
-    }
+    //for(i=0;i<T;i++) {
+      //  printf("Hello from %d\n",t_hello[i]);
+    //}
 
     return 0;
 }

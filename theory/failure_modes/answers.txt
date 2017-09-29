@@ -6,3 +6,4 @@
 	Load imbalance is the uneven distribution of work across workers.
 
 3. Download hw_race.c and examine the source code. The program should have each thread place its thread id into an array, that is then printed to the user. What would you expect the output to look like if there is a race condition? Compile and run hw_race.c until you are able to produce the race condition. Fix the race condition and then commit to your repository (if the solution has strangled scaling, that is fine).
+	If there is a race condition, there will be a line that will print Hello from -1 instead of an ID from 0-7.
