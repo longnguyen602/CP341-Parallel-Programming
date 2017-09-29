@@ -14,13 +14,14 @@ void proc_a() {
     x = A;
     x = x*2;
     // lock b during modification
+    omp_unset_lock(&lockA);
     omp_set_lock(&lockB);
     y = B;
     y -= x;
     B = y;
     // update A and release locks
     A = x;
-    omp_unset_lock(&lockA);
+    //omp_unset_lock(&lockA);
     omp_unset_lock(&lockB);
 }
 
@@ -31,6 +32,7 @@ void proc_b() {
     x = B;
     x = x/2;
     // lock a during modification
+    omp_unset_lock(&lockB);
     omp_set_lock(&lockA);
     y = A;
     y += x;
@@ -38,7 +40,7 @@ void proc_b() {
     // update B and release locks
     B = x;
     omp_unset_lock(&lockA);
-    omp_unset_lock(&lockB);
+    //omp_unset_lock(&lockB);
 }
 
 int main(int argc, char** argv) {

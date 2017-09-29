@@ -7,3 +7,6 @@
 
 3. Download hw_race.c and examine the source code. The program should have each thread place its thread id into an array, that is then printed to the user. What would you expect the output to look like if there is a race condition? Compile and run hw_race.c until you are able to produce the race condition. Fix the race condition and then commit to your repository (if the solution has strangled scaling, that is fine).
 	If there is a race condition, there will be a line that will print Hello from -1 instead of an ID from 0-7.
+
+4. Download hw_deadlock.c and examine the source code. This program can deadlock, how would you know that the deadlock has occurred when running the program? Compile and run hw_deadlock.c and notice the deadlock. Fix the deadlock and then commit to your repository (if the solution has strangled scaling, that is fine).
+	You will know the deadlock has occurred when the program stop printing the period to the console while still remain running.
