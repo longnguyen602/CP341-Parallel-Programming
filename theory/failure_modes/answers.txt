@@ -1,0 +1,8 @@
+1. Three of the pitfalls listed in the text are Race Conditions, Strangled Scaling, and Deadlocks. Briefly describe what each of these pitfalls and how you might detect their presence in your code.
+* Race Conditions-  occurs when concurrent tasks perform operations on the same memory location without proper synchronization, and one of the memory operations is a write.
+* Strangled Scaling-
+* Deadlocks- occur when at least two tasks wait for each other and cannot resume until the other task proceeds.
+2. What is load imbalance? On Tuesday we talked a bunch about how we might model parallel performance, does load imbalance break/change/complicate reasoning about performance in these models?
+	Load imbalance is the uneven distribution of work across workers.
+
+3. Download hw_race.c and examine the source code. The program should have each thread place its thread id into an array, that is then printed to the user. What would you expect the output to look like if there is a race condition? Compile and run hw_race.c until you are able to produce the race condition. Fix the race condition and then commit to your repository (if the solution has strangled scaling, that is fine).
