@@ -17,8 +17,11 @@
 // clock measurements
 #include <time.h>
 
+#include <omp.h>
+
 // valid pin characters
 const char* chars="0123456789";
+
 
 // tests if a hash matches a candidate password
 int test(const char* passhash, const char* passcandidate) {
@@ -70,11 +73,14 @@ int main(int argc, char** argv) {
 
     clock_gettime(CLOCK_MONOTONIC,&start_time);
     // While a match has not been found, search
-    int notfound=1;
-    while(notfound) {
+    //int notfound=1;
+    #pragma omp parallel for
+    //while(notfound) {
+    for (int i=0; i < 1000000; i++){
         // generate the password
         genpass(currpass,passmatch);
         // check for a match
+        // if matched, return 0
         notfound=test(argv[1], passmatch);
         currpass++;
     }
