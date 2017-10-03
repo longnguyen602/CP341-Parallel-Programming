@@ -15,8 +15,10 @@ void LinkedRecord_init(LinkedRecord_t* LR){
 
 int parse_line(char* line){
   int year;
-  char str_year[5] = {line[6], line[7], line[8], line[9]};
-  //printf("%s\n", str_year);
+  //printf("%s", line);
+  char str_year[5] = {line[6], line[7], line[8], line[9], '\0'};
+  printf("%s\n", str_year);
+  printf("TEST\n");
   year = atoi(str_year);
   printf("%d", year);
   return year;
@@ -68,6 +70,7 @@ int main(int argc, char** argv) {
     LinkedRecord_t* record;
     buf[strlen(buf) - 1] = '\0'; // eat the newline fgets() stores
     year=parse_line(buf);
+    printf("%d", year);
     record = find_record(&LR, year);
     record->stops+=1;
     //printf("%s\n", buf);
