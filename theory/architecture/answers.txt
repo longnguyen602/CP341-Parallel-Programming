@@ -1,0 +1,11 @@
+1 Three C functions were mentioned in class for reading data from a file. What are they and how do they differ from one another?
+	-They were fscanf,fgets, and fread.
+	-fread reads a specific number of items in bytes, each with size bytes you want from the stream
+	-fgets reads a specific number of characters fro mthe stream
+	-fscanf scans and process the  files with a specific format , and if the format contains any conversions, the resulting conversions are stored in the locations pointed by the pointer arguments that follow format.
+2 Variables in a program can be allocated on the stack or in the heap. What is the difference between the stack and the heap with respect to persistence of the data (when is memory space reclaimed)?
+	-The main different is that variables assigned in the stack go away when the function calls complete, so memory space is reclaimed when the function calls complete. Therefore, data on the stack will not persist pass the function call while the data on the heap will.
+3 Most modern programming languages have objects but do not have structs. Are modern languages losing any functionality by not have structs? Explain your answer.
+-Modern languages are not losing any functionality by not having structs because objects in modern languages have all the features of a struct and much more such as inheritance.
+4C does not have objects though C++ does. Even though C does not have objects, can C be used to implement a program using object-like logic? Explain your answer.
+	-C can be used to implement a program using object-like logic, up to a limit because we can imitate important features of objects such as fields, class vs instances, and methods of the object. Structs have fields, and we can use function pointers to imitate the object’s methods. Additionally, structs have a distinction between struct vs instances due to how we define structs in the code.
