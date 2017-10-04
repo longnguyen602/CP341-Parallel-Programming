@@ -81,7 +81,7 @@ int main(int argc, char** argv) {
     //for (int i=0; notfound==1 && i < 100000000; i++){
     for (int i=0; i < 100000000; i++){
         // generate the password
-        omp_set_lock(&lockA);
+        //omp_set_lock(&lockA);
         genpass(currpass,passmatch);
         //omp_unset_lock(&lockA);
         //printf("found: %s\n",passmatch);
@@ -89,6 +89,7 @@ int main(int argc, char** argv) {
         // if matched, return 0
         notfound=test(argv[1], passmatch);
         //omp_unset_lock(&lockA);
+        omp_set_lock(&lockA);
         if (notfound==0){
           printf("\n%d\n", notfound);
           //correct = passmatch;
