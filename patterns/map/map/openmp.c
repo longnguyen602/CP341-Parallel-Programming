@@ -22,7 +22,7 @@
 // valid pin characters
 const char* chars="0123456789";
 
-
+omp_lock_t lockA;
 // tests if a hash matches a candidate password
 int test(const char* passhash, const char* passcandidate) {
     unsigned char digest[MD5_DIGEST_LENGTH]; // hash storage
@@ -81,7 +81,9 @@ int main(int argc, char** argv) {
     //for (int i=0; notfound==1 && i < 100000000; i++){
     for (int i=0; i < 100000000; i++){
         // generate the password
+        omp_set_lock(&lockA);
         genpass(currpass,passmatch);
+        omp_unset_lock(&lockA);
         //printf("found: %s\n",passmatch);
         // check for a match
         // if matched, return 0
