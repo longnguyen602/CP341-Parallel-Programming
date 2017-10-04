@@ -64,6 +64,7 @@ int main(int argc, char** argv) {
     }
 
     char passmatch[9]; // buffer for the matched password
+    char correct[9];
     long currpass=0; // current password under consideration
 
     // variables for the timer
@@ -81,10 +82,13 @@ int main(int argc, char** argv) {
     for (int i=0; i < 100000000; i++){
         // generate the password
         genpass(currpass,passmatch);
-        printf("found: %s\n",passmatch);
+        //printf("found: %s\n",passmatch);
         // check for a match
         // if matched, return 0
         notfound=test(argv[1], passmatch);
+        if (notfound!=1){
+          correct = passmatch;
+        }
         currpass++;
     }
 
@@ -93,6 +97,6 @@ int main(int argc, char** argv) {
     // convert the time to elapsed milliseconds
     msec = (end_time.tv_sec - start_time.tv_sec)*1000 + (end_time.tv_nsec - start_time.tv_nsec)/1000000;
 
-    printf("found: %s in %dms\n",passmatch,msec);
+    printf("found: %s in %dms\n",correct,msec);
     return EXIT_SUCCESS;
 }
