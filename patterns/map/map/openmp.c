@@ -63,7 +63,7 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    char passmatch[9]; // buffer for the matched password
+    //char passmatch[9]; // buffer for the matched password
     char correct[9];
     long currpass=0; // current password under consideration
 
@@ -82,6 +82,7 @@ int main(int argc, char** argv) {
     for (int i=0; i < 100000000; i++){
         // generate the password
         //omp_set_lock(&lockA);
+        char passmatch[9];
         genpass(currpass,passmatch);
         //omp_unset_lock(&lockA);
         //printf("found: %s\n",passmatch);
@@ -89,7 +90,7 @@ int main(int argc, char** argv) {
         // if matched, return 0
         notfound=test(argv[1], passmatch);
         //omp_unset_lock(&lockA);
-        omp_set_lock(&lockA);
+        //omp_set_lock(&lockA);
         if (notfound==0){
           printf("\n%d\n", notfound);
           //correct = passmatch;
@@ -98,7 +99,7 @@ int main(int argc, char** argv) {
           printf("found passamtch: %s \n",passmatch);
           printf("found: %s \n",correct);
         }
-        omp_unset_lock(&lockA);
+        //omp_unset_lock(&lockA);
         currpass++;
     }
 
