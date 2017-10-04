@@ -81,6 +81,7 @@ int main(int argc, char** argv) {
     for (int i=0; i < 100000000; i++){
         // generate the password
         genpass(currpass,passmatch);
+        printf("found: %s\n",passmatch);
         // check for a match
         // if matched, return 0
         notfound=test(argv[1], passmatch);
