@@ -88,7 +88,7 @@ int main(int argc, char** argv) {
         // check for a match
         // if matched, return 0
         notfound=test(argv[1], passmatch);
-        omp_unset_lock(&lockA);
+        //omp_unset_lock(&lockA);
         if (notfound==0){
           printf("\n%d\n", notfound);
           //correct = passmatch;
@@ -97,6 +97,7 @@ int main(int argc, char** argv) {
           printf("found passamtch: %s \n",passmatch);
           printf("found: %s \n",correct);
         }
+        omp_unset_lock(&lockA);
         currpass++;
     }
 
