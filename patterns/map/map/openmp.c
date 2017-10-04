@@ -83,11 +83,12 @@ int main(int argc, char** argv) {
         // generate the password
         omp_set_lock(&lockA);
         genpass(currpass,passmatch);
-        omp_unset_lock(&lockA);
+        //omp_unset_lock(&lockA);
         //printf("found: %s\n",passmatch);
         // check for a match
         // if matched, return 0
         notfound=test(argv[1], passmatch);
+        omp_unset_lock(&lockA);
         if (notfound==0){
           printf("\n%d\n", notfound);
           //correct = passmatch;
