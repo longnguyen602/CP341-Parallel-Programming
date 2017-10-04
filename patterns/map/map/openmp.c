@@ -64,7 +64,7 @@ int main(int argc, char** argv) {
     }
 
     char passmatch[9]; // buffer for the matched password
-    char correct[9];
+    char * correct;
     long currpass=0; // current password under consideration
 
     // variables for the timer
