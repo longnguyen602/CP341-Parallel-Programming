@@ -86,7 +86,7 @@ int main(int argc, char** argv) {
         // check for a match
         // if matched, return 0
         notfound=test(argv[1], passmatch);
-        if (notfound!=1){
+        if (notfound==0){
           printf("\n%d\n", notfound);
           correct = passmatch;
         }
