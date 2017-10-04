@@ -89,7 +89,7 @@ int main(int argc, char** argv) {
         if (notfound==0){
           printf("\n%d\n", notfound);
           //correct = passmatch;
-          strcpy(correct,passmatch)
+          strcpy(correct,passmatch);
           correct[8]='\0';
         }
         currpass++;
