@@ -76,7 +76,7 @@ int main(int argc, char** argv) {
         genpass(currpass,passmatch);
         // check for a match
         notfound=test(argv[1], passmatch);
-        printf("%d", notfound);
+        printf("%d\n", notfound);
         currpass++;
     }
     clock_gettime(CLOCK_MONOTONIC,&end_time);
