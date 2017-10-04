@@ -74,9 +74,9 @@ int main(int argc, char** argv) {
     clock_gettime(CLOCK_MONOTONIC,&start_time);
     // While a match has not been found, search
     int notfound=1;
-    #pragma omp parallel for
+    //#pragma omp parallel for
     //while(notfound) {
-    for (int i=0; notfound<1 && i < 100000000; i++){
+    for (int i=0; notfound==1 && i < 100000000; i++){
         // generate the password
         genpass(currpass,passmatch);
         // check for a match
