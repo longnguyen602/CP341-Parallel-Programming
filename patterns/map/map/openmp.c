@@ -91,6 +91,7 @@ int main(int argc, char** argv) {
           //correct = passmatch;
           strcpy(correct,passmatch);
           correct[8]='\0';
+          printf("found: %s \n",correct;
         }
         currpass++;
     }
