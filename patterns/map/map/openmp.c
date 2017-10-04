@@ -87,6 +87,7 @@ int main(int argc, char** argv) {
         // if matched, return 0
         notfound=test(argv[1], passmatch);
         if (notfound!=1){
+          printf("\n%d\n", notfound);
           correct = passmatch;
         }
         currpass++;
