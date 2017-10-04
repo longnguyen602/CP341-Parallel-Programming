@@ -70,7 +70,6 @@ int main(int argc, char** argv) {
     struct timespec start_time;
     struct timespec end_time;
     long msec;
-    OMP_CANCELLATION
 
     clock_gettime(CLOCK_MONOTONIC,&start_time);
     // While a match has not been found, search
