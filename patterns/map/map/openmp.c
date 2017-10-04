@@ -91,7 +91,6 @@ int main(int argc, char** argv) {
           correct[8]='\0';
 
         }
-        //omp_unset_lock(&lockA);
         currpass++;
     }
 
