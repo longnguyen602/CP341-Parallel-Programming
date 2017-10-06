@@ -7,6 +7,7 @@
 #include <math.h>
 #include <time.h>
 #include <cilk/cilk.h>
+#include <cilk/reducer_opadd.h>
 
 /* struct to hold objects attributes */
 struct phaseball {
