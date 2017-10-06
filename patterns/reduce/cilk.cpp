@@ -56,17 +56,17 @@ void post_process(struct volume* v, float* cx, float* cy) {
     //double mass_sum=0.0;
     //double wx=0.0;
     //double wy=0.0;
-    cilk::reducer< cilk::op_add<double> > mass_sum;
-    cilk::reducer< cilk::op_add<double> > wx;
-    cilk::reducer< cilk::op_add<double> > wy;
+    cilk::reducer< cilk::op_add<double> > mass_sum, wx, wy;
+    //cilk::reducer< cilk::op_add<double> > wx;
+    //cilk::reducer< cilk::op_add<double> > wy;
     //mass_sum=0.0;
     //wx=0.0;
     //wy=0.0;
     cilk_for(int i=0; i<v->last; i++) {
         struct phaseball* o = v->objects[i];
-        mass_sum = mass_sum+ o->mass;
-        wx = wx + o->x * o->mass;
-        wy = wy+ o->y * o->mass;
+        mass_sum += o->mass;
+        wx += o->x * o->mass;
+        wy += o->y * o->mass;
     }
     *cx = wx/mass_sum;
     *cy = wy/mass_sum;
