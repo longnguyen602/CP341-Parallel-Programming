@@ -53,12 +53,15 @@ void place_uniformly(int sx, int ex, int sy, int ey, int sz, int ez, struct volu
 
 // Projects 3D volume to 11x11 2D map and report centroid
 void post_process(struct volume* v, float* cx, float* cy) {
-    double mass_sum=0.0;
-    double wx=0.0;
-    double wy=0.0;
-    cilk::reducer< cilk::op_add<> > mass_sum;
-    cilk::reducer< cilk::op_add<> > wx;
-    cilk::reducer< cilk::op_add<> > wy;
+    //double mass_sum=0.0;
+    //double wx=0.0;
+    //double wy=0.0;
+    cilk::reducer< cilk::op_add<double> > mass_sum;
+    cilk::reducer< cilk::op_add<double> > wx;
+    cilk::reducer< cilk::op_add<double> > wy;
+    mass_sum=0.0;
+    wx=0.0;
+    wy=0.0;
     cilk_for(int i=0; i<v->last; i++) {
         struct phaseball* o = v->objects[i];
         mass_sum += o->mass;
