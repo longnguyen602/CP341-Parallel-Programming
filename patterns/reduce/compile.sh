@@ -7,7 +7,7 @@ gcc -o centroid_serial serial.c
 gcc -o centroid_openmp -fopenmp openmp.c
 
 # Compile the cilkplus version
-g++ -o centroid_cilk -fcilkplus cilk.c
+g++ -o centroid_cilk -fcilkplus cilk.cpp
 
 # Compile the tbb version
 g++ -o centroid_tbb tbb.c -ltbb
