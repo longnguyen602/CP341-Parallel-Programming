@@ -40,7 +40,7 @@ void place_uniformly(int sx, int ex, int sy, int ey, int sz, int ez, struct volu
     for(int i=sx; i<=ex; i++) {
         for(int j=sy; j<=ey; j++) {
             for(int k=sz; k<=ez; k++) {
-                struct phaseball* n = malloc(sizeof(struct phaseball));
+                struct phaseball* n = (struct phaseball**)malloc(sizeof(struct phaseball));
                 n->x = i;
                 n->y = j;
                 n->z = k;
