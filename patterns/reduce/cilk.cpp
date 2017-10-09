@@ -65,9 +65,9 @@ void post_process(struct volume* v, float* cx, float* cy) {
     //wy=0.0;
     cilk_for(int i=0; i<v->last; i++) {
         struct phaseball* o = v->objects[i];
-        mass_sum += o->mass;
-        wx += o->x * o->mass;
-        wy += o->y * o->mass;
+        *mass_sum += o->mass;
+        *wx += o->x * o->mass;
+        *wy += o->y * o->mass;
     }
     *cx = wx/mass_sum;
     *cy = wy/mass_sum;
