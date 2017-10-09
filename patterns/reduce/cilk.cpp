@@ -69,8 +69,8 @@ void post_process(struct volume* v, float* cx, float* cy) {
         *wx += o->x * o->mass;
         *wy += o->y * o->mass;
     }
-    *cx = *wx/(*mass_sum);
-    *cy = *wy/(*mass_sum);
+    *cx = wx/(mass_sum);
+    *cy = wy/(mass_sum);
 
     return;
 }
