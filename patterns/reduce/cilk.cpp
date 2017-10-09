@@ -27,7 +27,8 @@ struct volume {
 void volume_append(struct volume* v, struct phaseball* o) {
     if( v->last == v->size ) {
         (v->size) += 100;
-        v->objects = realloc(v->objects, sizeof(struct phaseball*)*(v->size)+100);
+        //cast into phase ball **
+        v->objects = (struct phaseball**)realloc(v->objects, sizeof(struct phaseball*)*(v->size)+100);
     }
     (v->objects)[(v->last)] = o;
     (v->last) += 1;
