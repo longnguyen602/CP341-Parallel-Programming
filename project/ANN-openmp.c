@@ -103,10 +103,11 @@ void run(ANN_t* ANN,int iterations){
     double error=0.0;
 
     //run it as many times as the amount of inputs we have from out data
-    //#pragma omp parallel for num_threads(8)
+    #pragma omp parallel for num_threads(8)
     for( int input = 0 ; input < data_inputs ; input++ ) {
 
       //calculate the hidden activation
+      pragma omp parallel for num_threads(8)
       for( int j = 0 ; j < ANN->size_layer2 ; j++ ) {
         sum_layer2[input][j] = ANN->weights_into_hidden[0][j] ;
         #pragma omp parallel for reduction(+:sum_layer2)
@@ -131,7 +132,7 @@ void run(ANN_t* ANN,int iterations){
         d_output_layer[k] = (ANN->cases[input][k] - output_layer[input][k]) * output_layer[input][k] * (1.0 - output_layer[input][k]) ;
        }//end of computing out activation
 
-      //#pragma omp parallel for num_threads(8)
+      #pragma omp parallel for num_threads(8)
        //back propagate to hidden layer
       for( int l = 0 ; l < ANN->size_layer2 ; l++ ) {
         sum_layer2_back[l] = 0.0 ;
@@ -143,6 +144,7 @@ void run(ANN_t* ANN,int iterations){
       }//end of backpropagation for loop
 
       //update the weights between input and hidden layer
+      #pragma omp parallel for num_threads(8)
       #pragma omp parallel for reduction(+:ANN->weights_into_hidden)
       for( int n = 0 ; n < ANN->size_layer2 ; n++ ) {
           ANN->d_weights_into_hidden[0][n] = ANN->eta * d_hidden_layer[n] + ANN->alpha * ANN->d_weights_into_hidden[0][n] ;
