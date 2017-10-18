@@ -90,6 +90,7 @@ void initialize_weights(ANN_t* ANN, int size, int size_layer2, int size_layer3){
 
 //run the whole neural network, where most of the calculations are
 void run(ANN_t* ANN, int iterations){
+  printf("iterations: %d", iterations);
   int data_inputs = 683;
   double sum_layer2[data_inputs][ANN->size_layer2];
   double sum_layer2_back[ANN->size_layer2];
