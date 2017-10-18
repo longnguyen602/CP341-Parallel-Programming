@@ -11,5 +11,5 @@ ANN-openmp.o: ANN-openmp.c
 		gcc -c ANN-openmp.c -lm
 
 run: ANN ANN-openmp
-	./ANN 10000 40
-	./ANN-openmp 10000 40
+	./ANN 5000 20
+	./ANN-openmp 5000 20
