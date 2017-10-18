@@ -98,7 +98,7 @@ void run(ANN_t* ANN,int iterations){
   double output_layer[data_inputs][ANN->size_layer3];
   double d_hidden_layer[ANN->size_layer2];
   double d_output_layer[ANN->size_layer3];
-  #pragma omp parallel for num_threads(8)
+  //#pragma omp parallel for num_threads(8)
   for( int epoch = 0 ; epoch < iterations ; epoch++) {
     double error=0.0;
 
