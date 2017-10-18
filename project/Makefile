@@ -6,4 +6,4 @@ ANN.o: ANN.c
 		gcc -c ANN.c -lm
 
 run: ANN
-	./ANN
+	./ANN 9000
