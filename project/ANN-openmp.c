@@ -135,7 +135,7 @@ void run(ANN_t* ANN,int iterations){
        //back propagate to hidden layer
       for( int l = 0 ; l < ANN->size_layer2 ; l++ ) {
         sum_layer2_back[l] = 0.0 ;
-        //#pragma omp parallel for reduction(+:sum_layer2_back)
+        #pragma omp parallel for reduction(+:sum_layer2_back)
         for( int m = 1 ; m < ANN->size_layer3 ; m++ ) {
           sum_layer2_back[l] += ANN->weights_outof_hidden[l][m] * d_output_layer[m] ;
         }
@@ -155,7 +155,7 @@ void run(ANN_t* ANN,int iterations){
       }// end of updating weights between input and hidden layer
 
       //update weights between hidden and output layer
-      //#pragma omp parallel for reduction(+:ANN->ANN->weights_outof_hidden)
+      #pragma omp parallel for reduction(+:ANN->ANN->weights_outof_hidden)
       for( int o = 0 ; o < ANN->size_layer3 ; o ++ ) {
                ANN->d_weights_outof_hidden[0][o] = ANN->eta * d_output_layer[o] + ANN->alpha * ANN->d_weights_outof_hidden[0][o] ;
                ANN->weights_outof_hidden[0][o] += ANN->d_weights_outof_hidden[0][o] ;
