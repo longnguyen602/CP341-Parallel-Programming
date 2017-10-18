@@ -166,9 +166,6 @@ void run(ANN_t* ANN, int iterations){
     if( epoch%1000 == 0 ) {
       fprintf(stdout, "\nEpoch %-5d :   Error = %f", epoch, error) ;
     }
-    if( error < 0.005 ) {
-      break ;
-    }
   }//end of epoch for loop
   clock_gettime(CLOCK_MONOTONIC,&end_time);
   long msec = (end_time.tv_sec - start_time.tv_sec)*1000 + (end_time.tv_nsec - start_time.tv_nsec)/1000000;
