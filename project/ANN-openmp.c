@@ -107,6 +107,7 @@ void run(ANN_t* ANN){
       //calculate the hidden activation
       for( int j = 0 ; j < ANN->size_layer2 ; j++ ) {
         sum_layer2[input][j] = ANN->weights_into_hidden[0][j] ;
+        #pragma omp parallel for reduction(+:sum_layer2)
         for( int i = 0 ; i < ANN->size ; i++ ) {
           sum_layer2[input][j] += ANN->case_features[input][i] * ANN->weights_into_hidden[i][j] ;
         }
@@ -230,5 +231,5 @@ int main(int argc, char** argv) {
   run(ANN);
   clock_gettime(CLOCK_MONOTONIC,&end_time);
   long msec = (end_time.tv_sec - start_time.tv_sec)*1000 + (end_time.tv_nsec - start_time.tv_nsec)/1000000;
-  printf("Run time in %dms\n",msec);
+  printf("\nRun time in %dms\n",msec);
 }
