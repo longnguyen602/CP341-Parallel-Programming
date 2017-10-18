@@ -208,7 +208,7 @@ void loadDataset(ANN_t* ANN){
         //(value-min)/(max-min)
     }//end of outer while
     //printf("Testing:%f", ANN->case_features[682][0]);
-    printf("\n End of load dataset\n");
+    printf("\n End of load dataset: MAke file works\n");
 }//end of load data set
 
 int main(int argc, char** argv) {
