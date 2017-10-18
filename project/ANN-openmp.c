@@ -102,6 +102,7 @@ void run(ANN_t* ANN,int iterations){
     double error=0.0;
 
     //run it as many times as the amount of inputs we have from out data
+    #pragma omp parallel for
     for( int input = 0 ; input < data_inputs ; input++ ) {
 
       //calculate the hidden activation
