@@ -224,7 +224,7 @@ int main(int argc, char** argv) {
   int iterations;
   struct timespec start_time;
   struct timespec end_time;
-  iterations=argv[1];
+  iterations=atoi(argv[1]);
   a=10;
   b=20;
   c=1;
