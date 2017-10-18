@@ -107,7 +107,7 @@ void run(ANN_t* ANN,int iterations){
     for( int input = 0 ; input < data_inputs ; input++ ) {
 
       //calculate the hidden activation
-      pragma omp parallel for num_threads(8)
+      #pragma omp parallel for num_threads(8)
       for( int j = 0 ; j < ANN->size_layer2 ; j++ ) {
         sum_layer2[input][j] = ANN->weights_into_hidden[0][j] ;
         #pragma omp parallel for reduction(+:sum_layer2)
