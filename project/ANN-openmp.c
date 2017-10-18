@@ -110,7 +110,6 @@ void run(ANN_t* ANN,int iterations){
       for( int j = 0 ; j < ANN->size_layer2 ; j++ ) {
         sum_layer2[input][j] = ANN->weights_into_hidden[0][j] ;
         #pragma omp parallel for reduction(+:sum_layer2)
-        #pragma omp parallel for reduction(*:tmp)
         for( int i = 0 ; i < ANN->size ; i++ ) {
           sum_layer2[input][j] += ANN->case_features[input][i] * ANN->weights_into_hidden[i][j] ;
         }
