@@ -103,7 +103,7 @@ void run(ANN_t* ANN,int iterations){
     double error=0.0;
 
     //run it as many times as the amount of inputs we have from out data
-    #pragma omp parallel for num_threads(8)
+    //#pragma omp parallel for num_threads(8)
     for( int input = 0 ; input < data_inputs ; input++ ) {
 
       //calculate the hidden activation
@@ -225,11 +225,13 @@ int main(int argc, char** argv) {
   int b;
   int c;
   int iterations;
+  int nodes;
   struct timespec start_time;
   struct timespec end_time;
   iterations=atoi(argv[1]);
+  nodes=atoi(argv[2]);
   a=10;
-  b=20;
+  b=nodes;
   c=1;
   ANN_t *ANN;
   ANN = (ANN_t*)malloc(sizeof(ANN_t));
