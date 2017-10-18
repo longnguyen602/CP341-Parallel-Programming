@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <time.h>
 
 struct _ANN{
     int size;
@@ -87,6 +88,7 @@ void initialize_weights(ANN_t* ANN, int size, int size_layer2, int size_layer3){
 
 }//end of initialize weights
 
+//run the whole neural network, where most of the calculations are
 void run(ANN_t* ANN){
   int data_inputs = 683;
   double sum_layer2[data_inputs][ANN->size_layer2];
@@ -212,6 +214,8 @@ int main(int argc, char** argv) {
   int a;
   int b;
   int c;
+  struct timespec start_time;
+  struct timespec end_time;
   a=10;
   b=20;
   c=1;
@@ -222,5 +226,9 @@ int main(int argc, char** argv) {
   initialize_weights(ANN,a,b,c);
   //Test initialize_weights
   loadDataset(ANN);
+  clock_gettime(CLOCK_MONOTONIC,&start_time);
   run(ANN);
+  clock_gettime(CLOCK_MONOTONIC,&end_time);
+  long msec = (end_time.tv_sec - start_time.tv_sec)*1000 + (end_time.tv_nsec - start_time.tv_nsec)/1000000;
+  printf("\nRun time in %dms\n",msec);
 }
