@@ -89,7 +89,7 @@ void initialize_weights(ANN_t* ANN, int size, int size_layer2, int size_layer3){
 }//end of initialize weights
 
 //run the whole neural network, where most of the calculations are
-void run(ANN_t* ANN){
+void run(ANN_t* ANN, int iterations){
   int data_inputs = 683;
   double sum_layer2[data_inputs][ANN->size_layer2];
   double sum_layer2_back[ANN->size_layer2];
@@ -98,7 +98,7 @@ void run(ANN_t* ANN){
   double output_layer[data_inputs][ANN->size_layer3];
   double d_hidden_layer[ANN->size_layer2];
   double d_output_layer[ANN->size_layer3];
-  for( int epoch = 0 ; epoch < 1000000 ; epoch++) {
+  for( int epoch = 0 ; epoch < iterations ; epoch++) {
     double error=0.0;
 
     //run it as many times as the amount of inputs we have from out data
@@ -214,8 +214,10 @@ int main(int argc, char** argv) {
   int a;
   int b;
   int c;
+  int iterations;
   struct timespec start_time;
   struct timespec end_time;
+  iterations=argv[1];
   a=10;
   b=20;
   c=1;
@@ -227,7 +229,7 @@ int main(int argc, char** argv) {
   //Test initialize_weights
   loadDataset(ANN);
   clock_gettime(CLOCK_MONOTONIC,&start_time);
-  run(ANN);
+  run(ANN, iterations);
   clock_gettime(CLOCK_MONOTONIC,&end_time);
   long msec = (end_time.tv_sec - start_time.tv_sec)*1000 + (end_time.tv_nsec - start_time.tv_nsec)/1000000;
   printf("\nRun time in %dms\n",msec);
