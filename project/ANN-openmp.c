@@ -98,6 +98,9 @@ void run(ANN_t* ANN,int iterations){
   double output_layer[data_inputs][ANN->size_layer3];
   double d_hidden_layer[ANN->size_layer2];
   double d_output_layer[ANN->size_layer3];
+  struct timespec start_time;
+  struct timespec end_time;
+  clock_gettime(CLOCK_MONOTONIC,&start_time);
   #pragma omp parallel for num_threads(8)
   for( int epoch = 0 ; epoch < iterations ; epoch++) {
     double error=0.0;
@@ -107,7 +110,7 @@ void run(ANN_t* ANN,int iterations){
     for( int input = 0 ; input < data_inputs ; input++ ) {
 
       //calculate the hidden activation
-      #pragma omp parallel for num_threads(8)
+      pragma omp parallel for num_threads(8)
       for( int j = 0 ; j < ANN->size_layer2 ; j++ ) {
         sum_layer2[input][j] = ANN->weights_into_hidden[0][j] ;
         #pragma omp parallel for reduction(+:sum_layer2)
@@ -178,6 +181,9 @@ void run(ANN_t* ANN,int iterations){
       break ;
     }
   }//end of epoch for loop
+  clock_gettime(CLOCK_MONOTONIC,&end_time);
+  long msec = (end_time.tv_sec - start_time.tv_sec)*1000 + (end_time.tv_nsec - start_time.tv_nsec)/1000000;
+  printf("\nRun time in %dms\n",msec);
 
 
 }//end of run
@@ -228,8 +234,8 @@ int main(int argc, char** argv) {
   int c;
   int iterations;
   int nodes;
-  struct timespec start_time;
-  struct timespec end_time;
+  //struct timespec start_time;
+  //struct timespec end_time;
   iterations=atoi(argv[1]);
   nodes=atoi(argv[2]);
   a=10;
@@ -242,9 +248,9 @@ int main(int argc, char** argv) {
   initialize_weights(ANN,a,b,c);
   //Test initialize_weights
   loadDataset(ANN);
-  clock_gettime(CLOCK_MONOTONIC,&start_time);
+  //clock_gettime(CLOCK_MONOTONIC,&start_time);
   run(ANN, iterations);
-  clock_gettime(CLOCK_MONOTONIC,&end_time);
-  long msec = (end_time.tv_sec - start_time.tv_sec)*1000 + (end_time.tv_nsec - start_time.tv_nsec)/1000000;
-  printf("\nRun time in %dms\n",msec);
+  //clock_gettime(CLOCK_MONOTONIC,&end_time);
+  //long msec = (end_time.tv_sec - start_time.tv_sec)*1000 + (end_time.tv_nsec - start_time.tv_nsec)/1000000;
+  //printf("\nRun time in %dms\n",msec);
 }
